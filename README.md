@@ -12,7 +12,7 @@
 
 # Introduction
 
-Bootstrap and package your project with Angular 10 and Electron 10 (Typescript + SASS + Webpack) for creating Desktop applications.
+Bootstrap and package your project with Angular 10 and Electron 10 for creating Desktop applications.
 
 Currently runs with:
 
@@ -21,11 +21,10 @@ Currently runs with:
 
 With this sample, you can :
 
-- Run your app in a local development environment with Electron & Hot reload
+- Run your app in a local development environment with Electron
 - Run your app in a production environment
-- Package your app into an executable file for Linux, Windows & Mac
 
-/!\ Angular 10.x CLI needs Node 10.13 or later to work correctly.
+**Note: Angular 10.x CLI needs Node 10.13 or later to work correctly.**
 
 ## Getting Started
 
