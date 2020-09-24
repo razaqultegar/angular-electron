@@ -1,20 +1,38 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+  "atom": {
+    "rewriteTsconfig": false
+  },
+  "buildOnSave": false,
   "compileOnSave": false,
   "compilerOptions": {
+    "allowJs": true,
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
     "module": "es2020",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es2015",
     "lib": [
       "es2018",
       "dom"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "hammerjs",
+      "node",
+      "source-map",
+      "uglify-js",
+      "webdriverio"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
