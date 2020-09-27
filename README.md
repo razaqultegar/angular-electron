@@ -16,7 +16,7 @@ Bootstrap and package your project with Angular 10 and Electron 10 for creating 
 
 Currently runs with:
 
-- Angular v10.1.12
+- Angular v10.1.2
 - Electron v10.1.2
 
 With this sample, you can :
