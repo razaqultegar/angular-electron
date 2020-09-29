@@ -17,6 +17,7 @@
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */
+import 'core-js/es/reflect';
 
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
 // import 'classlist.js';  // Run `npm install --save classlist.js`.
@@ -61,3 +62,9 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+if ('production' === ENV) {
+  // Production
+} else {
+  // Development
+}
+
