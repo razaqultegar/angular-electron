@@ -1,32 +1,109 @@
-// Karma configuration file, see link for more information
-// https://karma-runner.github.io/1.0/config/configuration-file.html
+/**
+ * @author: type.io
+ */
 
 module.exports = function (config) {
-  config.set({
+  var configuration = {
+
+    // base path that will be used to resolve all patterns (e.g. files, exclude)
     basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
-    plugins: [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-coverage-istanbul-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma')
-    ],
+
+    /*
+     * Frameworks to use
+     *
+     * available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+     */
+    frameworks: ['jasmine'],
+
+    // list of files to exclude
+    exclude: [],
+
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-    coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/angular-electron'),
-      reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
+
+    /*
+     * list of files / patterns to load in the browser
+     *
+     * we are building the test environment in ./spec-bundle.js
+     */
+    files: [
+      { pattern: './config/spec-bundle.js', watched: false },
+      { pattern: './src/assets/**/*', watched: false, included: false, served: true, nocache: false }
+    ],
+
+    /*
+     * By default all assets are served at http://localhost:[PORT]/base/
+     */
+    proxies: {
+      "/assets/": "/base/src/assets/"
     },
-    reporters: ['progress', 'kjhtml'],
+
+    /*
+     * preprocess matching files before serving them to the browser
+     * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+     */
+    preprocessors: { './config/spec-bundle.js': ['coverage', 'sourcemap'] },
+
+    coverageReporter: {
+      type: 'in-memory'
+    },
+
+    remapCoverageReporter: {
+      'text-summary': null,
+      json: './coverage/coverage.json',
+      html: './coverage/html'
+    },
+
+    /*
+     * test results reporter to use
+     *
+     * possible values: 'dots', 'progress'
+     * available reporters: https://npmjs.org/browse/keyword/karma-reporter
+     */
+    reporters: ['mocha', 'coverage', 'remap-coverage'],
+
+    // web server port
     port: 9876,
+
+    // enable / disable colors in the output (reporters and logs)
     colors: true,
-    logLevel: config.LOG_INFO,
+
+    /*
+     * level of logging
+     * possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+     */
+    logLevel: config.LOG_WARN,
+
+    // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false,
-    restartOnFileChange: true
-  });
+
+    /*
+     * start these browsers
+     * available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+     *
+     */
+    browsers: ['ChromeTravisCi'],
+
+    customLaunchers: {
+      ElectronDebugging: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
+      },
+    },
+
+    /*
+     * Continuous Integration mode
+     * if true, Karma captures browsers, runs the tests and exits
+     */
+    singleRun: true
+  };
+
+  if (process.env.TRAVIS) {
+    configuration.browsers = [
+      'ChromeTravisCi'
+    ];
+  }
+
+  config.set(configuration);
 };
