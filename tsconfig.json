@@ -1,38 +1,41 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "atom": {
-    "rewriteTsconfig": false
-  },
-  "buildOnSave": false,
-  "compileOnSave": false,
   "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": "./",
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
+    "target": "es2015",
     "module": "es2020",
     "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "target": "es2015",
+    "noEmit": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "strictNullChecks": false,
     "lib": [
       "es2018",
       "dom"
     ],
+    "baseUrl": "./src",
     "typeRoots": [
       "node_modules/@types"
     ],
     "types": [
       "hammerjs",
       "node",
-      "source-map",
-      "uglify-js",
-      "webdriverio"
+      "source-map"
     ]
   },
   "exclude": [
     "node_modules",
     "dist"
-  ]
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }
