@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
+export const ROOT_SELECTOR = 'app-root';
+
 @Component({
-  selector: 'app-root',
+  selector: ROOT_SELECTOR,
   templateUrl: '../templates/app.html'
 })
 
