@@ -1,3 +1,8 @@
-// Look in ./config for karma.conf.js
+/**
+ * @author: tipe.io
+ */
 
+/**
+ * Look in ./config for karma.conf.js
+ */
 module.exports = require('./config/karma.conf.js');
