@@ -22,7 +22,8 @@
     "types": [
       "hammerjs",
       "node",
-      "source-map"
+      "source-map",
+      "webpack"
     ]
   },
   "exclude": [
